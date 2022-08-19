@@ -19,12 +19,25 @@ document.getElementById('next').addEventListener('click', (event) => {
 
 });
 
-document.getElementById('previous').addEventListener('click', (event) => {
-  name_players.unshift(name_players.pop());
-  let element_photo13 = document.getElementById('photo1');
-  element_photo13.setAttribute("src", name_players[0]);
-  capture.unshift(capture.pop());
-  let element_span3 = document.getElementById('span');
-  element_span3.innerText = capture[0];
+function getNumberOrString(value) {
+  // Convert a string value to a number if possible
+  let number_value = Number(value);
+  if (Number.isNaN(number_value)) {
+    return value
+  } else {
+    return number_value
+  }
+}
+
+
+
+document.getElementById('submit').addEventListener('click', (event) => {
+  let element_show = document.getElementById('show');
+  let new_li = document.createElement('li');
+  new_li.innerText = getNumberOrString(document.getElementById('comment').value);
+
+  element_show.appendChild(new_li);
 
 });
+
+
